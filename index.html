@@ -1,1 +1,1331 @@
-Hi!
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Thi Trang - Automation QA Engineer/Full-Stack QA Engineer | SSI Style</title>
+    <!-- Google Fonts for sleek corporate look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            /* SSI Brand Color Scheme */
+            --ssi-red: #c41224;
+            --ssi-red-dark: #9e0e1c;
+            --ssi-red-light: #fdf2f2;
+            --ssi-red-subtle: #fbe5e7;
+            --dark-navy: #0f172a;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-page: #f1f5f9;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --sidebar-bg: #fafbfc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 30px 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .cv-container {
+            max-width: 980px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(196, 18, 36, 0.08);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* Floating Language Switcher */
+        .lang-switcher-wrapper {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            padding: 4px;
+            border-radius: 20px;
+            border: 1.5px solid var(--ssi-red);
+            box-shadow: 0 4px 12px rgba(196, 18, 36, 0.12);
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-btn.active {
+            background: var(--ssi-red);
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(196, 18, 36, 0.25);
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 35px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* Avatar Container */
+        .avatar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .avatar-container {
+            width: 135px;
+            height: 135px;
+            border-radius: 50%;
+            border: 4px solid var(--ssi-red);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(196, 18, 36, 0.22);
+            transition: all 0.25s ease;
+        }
+
+        .avatar-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(196, 18, 36, 0.32);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .avatar-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(196, 18, 36, 0.65);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .avatar-container:hover .avatar-overlay {
+            opacity: 1;
+        }
+
+        .upload-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        #imageUpload {
+            display: none;
+        }
+
+        /* Sidebar Blocks */
+        .side-block {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .side-title {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ssi-red);
+            border-bottom: 2px solid var(--ssi-red-subtle);
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .side-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--ssi-red);
+        }
+
+        .info-list {
+            list-style: none;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            word-break: break-word;
+        }
+
+        .info-item svg {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+            fill: var(--ssi-red);
+            margin-top: 2px;
+        }
+
+        .info-item a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .info-item a:hover {
+            color: var(--ssi-red);
+            text-decoration: underline;
+        }
+
+        /* Education in Sidebar */
+        .side-edu-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px 12px;
+            border-left: 3px solid var(--ssi-red);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .side-edu-school {
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--dark-navy);
+            line-height: 1.3;
+        }
+
+        .side-edu-degree {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .side-edu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3px;
+            font-size: 11px;
+        }
+
+        .side-edu-date {
+            color: var(--ssi-red);
+            font-weight: 600;
+        }
+
+        .side-edu-gpa {
+            background: var(--ssi-red-light);
+            color: var(--ssi-red-dark);
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+
+        /* Skills */
+        .skill-badge-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: 11.5px;
+        }
+
+        .skill-cat {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 7px 9px;
+            border-left: 3px solid var(--ssi-red);
+        }
+
+        .skill-cat-title {
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 2px;
+        }
+
+        .cert-item {
+            font-size: 11.5px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 7px 9px;
+            border-radius: 6px;
+        }
+
+        /* Awards */
+        .award-item-side {
+            font-size: 11.5px;
+            padding: 5px 0;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .award-item-side:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .award-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .award-year {
+            font-weight: 700;
+            color: var(--ssi-red);
+            font-size: 10px;
+            background: var(--ssi-red-light);
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        .award-title {
+            font-weight: 600;
+            color: var(--dark-navy);
+            line-height: 1.3;
+        }
+
+        .award-org {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        /* Right Main Content */
+        .main-content {
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .name-header {
+            border-bottom: 2px solid var(--ssi-red-subtle);
+            padding-bottom: 14px;
+            padding-right: 140px;
+        }
+
+        .name-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark-navy);
+            letter-spacing: -0.3px;
+            text-transform: uppercase;
+            line-height: 1.15;
+        }
+
+        .name-header .headline {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ssi-red);
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sec-heading {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sec-heading::before {
+            content: "";
+            width: 4px;
+            height: 15px;
+            background: var(--ssi-red);
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .summary-box {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-main);
+            text-align: justify;
+            background: var(--ssi-red-light);
+            padding: 14px 18px;
+            border-radius: 8px;
+            border-left: 3px solid var(--ssi-red);
+        }
+
+        /* Standardized Experience Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 1px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-card);
+            border: 3px solid var(--ssi-red);
+            border-radius: 50%;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+            gap: 6px;
+        }
+
+        .role-company {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--dark-navy);
+        }
+
+        .company-sub {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ssi-red);
+        }
+
+        .timeline-date {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--ssi-red-dark);
+            background-color: var(--ssi-red-light);
+            border: 1px solid var(--ssi-red-subtle);
+            padding: 2px 8px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .desc-list {
+            list-style: disc;
+            margin-left: 16px;
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+
+        .desc-list li {
+            margin-bottom: 5px;
+        }
+
+        .desc-list li strong {
+            color: var(--dark-navy);
+            font-weight: 600;
+        }
+
+        .tools-line {
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: #fafbfc;
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tools-line strong {
+            color: var(--dark-navy);
+        }
+
+        /* PRINT STYLING - PERFECT A4 LAYOUT WITHOUT AWKWARD GAPS */
+        @page {
+            size: A4 portrait;
+            margin: 8mm 10mm;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            html, body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 12px;
+                line-height: 1.45;
+            }
+
+            .cv-container {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                border: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                display: grid !important;
+                grid-template-columns: 290px 1fr !important;
+                background: transparent !important;
+            }
+
+            /* Sidebar in Print */
+            .sidebar {
+                background-color: var(--sidebar-bg) !important;
+                border-right: 1.5px solid var(--border-color) !important;
+                padding: 15px 16px !important;
+                gap: 16px !important;
+            }
+
+            /* Main Content in Print */
+            .main-content {
+                padding: 15px 20px !important;
+                gap: 16px !important;
+            }
+
+            .avatar-container {
+                width: 110px !important;
+                height: 110px !important;
+                border-color: #c41224 !important;
+            }
+
+            .avatar-overlay, .upload-hint, .lang-switcher-wrapper {
+                display: none !important;
+            }
+
+            .name-header {
+                padding-right: 0 !important;
+                padding-bottom: 8px !important;
+            }
+
+            .name-header h1 {
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+            }
+
+            .name-header .headline {
+                font-size: 13px !important;
+                margin-top: 3px !important;
+            }
+
+            .summary-box {
+                padding: 10px 14px !important;
+                font-size: 12px !important;
+                line-height: 1.5 !important;
+            }
+
+            .timeline {
+                gap: 16px !important;
+            }
+
+            /* CHO PHÉP NGẮT TRANG TỰ NHIÊN ĐỂ KHÔNG BỊ TRỐNG */
+            .timeline-item {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            .timeline-header {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                margin-bottom: 4px !important;
+            }
+
+            .timeline-dot {
+                border-color: #c41224 !important;
+            }
+
+            .timeline::before {
+                background-color: #cbd5e1 !important;
+            }
+
+            .desc-list {
+                font-size: 12px !important;
+                line-height: 1.45 !important;
+                margin-top: 4px !important;
+            }
+
+            .desc-list li {
+                margin-bottom: 4px !important;
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            .tools-line {
+                font-size: 11px !important;
+                padding: 4px 8px !important;
+                background: #f8fafc !important;
+                margin-top: 6px !important;
+            }
+
+            /* SIDEBAR ITEMS NGẮT TỰ NHIÊN GIỮA CÁC GIẢI THƯỞNG */
+            .side-block {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            .side-title {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            .award-item-side {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+                padding: 4px 0 !important;
+            }
+
+            .skill-cat, .side-edu-box, .cert-item {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .lang-switcher-wrapper {
+                top: 12px;
+                right: 12px;
+            }
+
+            .name-header {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <!-- Interactive Language Switcher -->
+    <div class="lang-switcher-wrapper">
+        <button class="lang-btn active" id="btnVi" onclick="switchLanguage('vi')">🇻🇳 TIẾNG VIỆT</button>
+        <button class="lang-btn" id="btnEn" onclick="switchLanguage('en')">🇬🇧 ENGLISH</button>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+        <!-- 1. Avatar with upload trigger -->
+        <div class="avatar-wrapper">
+            <div class="avatar-container" onclick="document.getElementById('imageUpload').click()"
+                 title="Click để tải ảnh lên / Click to upload photo">
+                <img id="avatarImg" class="avatar-img" src="image/avatar-CV.jpg"
+                     alt="Nguyen Thi Trang Avatar">
+                <div class="avatar-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <span class="t-avatar-upload">Đổi ảnh</span>
+                </div>
+            </div>
+            <span class="upload-hint t-avatar-hint">Click vào ảnh để thay ảnh đại diện</span>
+            <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)">
+        </div>
+
+        <!-- 2. Personal Info -->
+        <div class="side-block">
+            <h3 class="side-title t-title-personal">Thông tin cá nhân</h3>
+            <ul class="info-list">
+                <li class="info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                    <span class="t-gender-dob">Nữ &bull; 09/03/1998</span>
+                </li>
+                <li class="info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <span>0396 309 617</span>
+                </li>
+                <li class="info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <a href="mailto:trangnt998@gmail.com">trangnt998@gmail.com</a>
+                </li>
+                <li class="info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <a href="https://github.com/trangnt998" target="_blank">github.com/trangnt998</a>
+                </li>
+                <li class="info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span class="t-address">Nam Từ Liêm, Hà Nội</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 3. Education (MOVED TO TOP OF SIDEBAR, ONLY HUST) -->
+        <div class="side-block">
+            <h3 class="side-title t-title-edu">Học vấn</h3>
+            <div class="side-edu-box">
+                <div class="side-edu-school t-school-hust">ĐẠI HỌC BÁCH KHOA HÀ NỘI</div>
+                <div class="side-edu-degree t-degree-hust">Kỹ sư Khoa học Máy tính &bull; Trường CNTT & TT (SoICT)</div>
+                <div class="side-edu-footer">
+                    <span class="side-edu-date">09/2016 &ndash; 08/2021</span>
+                    <span class="side-edu-gpa">CPA: 3.35/4.0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Skills -->
+        <div class="side-block">
+            <h3 class="side-title t-title-skills">Kỹ năng chuyên môn</h3>
+            <div class="skill-badge-group">
+                <div class="skill-cat">
+                    <div class="skill-cat-title t-skill-auto">Kiểm thử Tự động & Hiệu năng</div>
+                    <div>Playwright, Serenity BDD (Cucumber/JUnit), Selenium, JMeter, Rest-Assured, Postman, Katalon
+                    </div>
+                </div>
+                <div class="skill-cat">
+                    <div class="skill-cat-title t-skill-lang">Ngôn ngữ lập trình</div>
+                    <div>Java, TypeScript</div>
+                </div>
+                <div class="skill-cat">
+                    <div class="skill-cat-title t-skill-cicd">CI/CD & Giám sát hệ thống</div>
+                    <div>Jenkins, GitHub, GitLab, Datadog, Grafana</div>
+                </div>
+                <div class="skill-cat">
+                    <div class="skill-cat-title t-skill-tools">Công cụ quản lý dự án</div>
+                    <div>Jira, Confluence, Zephyr, QMetry, Figma, Slack, Airtable, minIO, MS Office</div>
+                </div>
+                <div class="skill-cat">
+                    <div class="skill-cat-title t-skill-db">Cơ sở dữ liệu</div>
+                    <div>SQL (PostgreSQL, MySQL), NoSQL (MongoDB)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Certifications -->
+        <div class="side-block">
+            <h3 class="side-title t-title-cert">Chứng chỉ quốc tế</h3>
+            <div class="cert-item">
+                <strong>ISTQB Foundation</strong><br>
+                <span style="font-size:11px; color:var(--text-muted);">ID: vtb-fl-20220874</span>
+            </div>
+        </div>
+
+        <!-- 6. Full 11 Awards -->
+        <div class="side-block">
+            <h3 class="side-title t-title-awards">Giải thưởng & Thành tựu</h3>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-1">Lao động tiên tiến</span>
+                    <span class="award-year">2024</span>
+                </div>
+                <span class="award-org t-awo-1">Tổng Công ty Giải pháp Doanh nghiệp Viettel (VTS)</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-2">Giải Nhất Ý tưởng Sáng tạo</span>
+                    <span class="award-year">2024</span>
+                </div>
+                <span class="award-org t-awo-2">Trung tâm Sản phẩm nền tảng &bull; VTS</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-3">Chiến sĩ thi đua</span>
+                    <span class="award-year">2023</span>
+                </div>
+                <span class="award-org t-awo-3">Tổng Công ty Giải pháp Doanh nghiệp Viettel (VTS)</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-4">Ý tưởng Sáng tạo được công nhận</span>
+                    <span class="award-year">2023</span>
+                </div>
+                <span class="award-org t-awo-4">Tổng Công ty Giải pháp Doanh nghiệp Viettel (VTS)</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-5">Giải Nhất Ý tưởng Sáng tạo</span>
+                    <span class="award-year">2022</span>
+                </div>
+                <span class="award-org t-awo-5">Trung tâm R&D &bull; VTS</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-6">Giải Thuyết trình Đồ án Tốt nghiệp Xuất sắc</span>
+                    <span class="award-year">2021</span>
+                </div>
+                <span class="award-org t-awo-6">Đại học Bách Khoa Hà Nội (HUST)</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-7">Giải Nhất Sáng tạo Khoa học Kỹ thuật</span>
+                    <span class="award-year">2019</span>
+                </div>
+                <span class="award-org t-awo-7">Cuộc thi Sáng tạo KHCN 2018-2019 &bull; HUST</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-8">Giải Khuyến khích Sinh viên NCKH</span>
+                    <span class="award-year">2019</span>
+                </div>
+                <span class="award-org t-awo-8">Đại học Bách Khoa Hà Nội (HUST)</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-9">Học bổng Microsoft YouthSpark</span>
+                    <span class="award-year">2018</span>
+                </div>
+                <span class="award-org t-awo-9">Tập đoàn Microsoft</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-10">Học bổng Odon Vallet</span>
+                    <span class="award-year">2016</span>
+                </div>
+                <span class="award-org t-awo-10">Tổ chức Khoa học & Giáo dục Gặp gỡ Việt Nam</span>
+            </div>
+
+            <div class="award-item-side">
+                <div class="award-head">
+                    <span class="award-title t-aw-11">Giải Nhì Học sinh Giỏi môn Vật lý cấp Tỉnh</span>
+                    <span class="award-year">2016</span>
+                </div>
+                <span class="award-org t-awo-11">Sở GD&ĐT Tỉnh Thanh Hóa</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main-content">
+        <!-- Name Header -->
+        <header class="name-header">
+            <h1>NGUYỄN THỊ TRANG</h1>
+            <div class="headline t-headline">Kỹ sư Kiểm thử Tự động/Kỹ sư Kiểm thử Phần mềm</div>
+        </header>
+
+        <!-- Summary -->
+        <section class="content-section">
+            <h2 class="sec-heading t-title-summary">Tóm tắt chuyên môn</h2>
+            <p class="summary-box t-summary-content">
+                Phát huy kinh nghiệm kiểm thử để xây dựng giải pháp đảm bảo chất lượng toàn diện. Định hướng phát triển
+                thành chuyên gia kiểm thử, đồng hành dẫn dắt đội ngũ kỹ thuật, cải tiến liên tục quy trình kiểm thử phần
+                mềm và mang lại giá trị bền vững cho dự án.
+            </p>
+        </section>
+
+        <!-- Experience Timeline (Only experience items and research left on main side) -->
+        <section class="content-section">
+            <h2 class="sec-heading t-title-exp">Kinh nghiệm làm việc</h2>
+            <div class="timeline">
+
+                <!-- 1. JITSU VIETNAM -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="role-company">JITSU VIETNAM</span>
+                            <div class="company-sub t-role-jitsu">Full-stack Tester &bull; Hà Nội</div>
+                        </div>
+                        <span class="timeline-date t-date-jitsu">04/2025 &ndash; Hiện tại</span>
+                    </div>
+                    <ul class="desc-list" id="exp-jitsu">
+                        <li><strong>UI & API Automation:</strong> Thiết kế và xây dựng khung kiểm thử tự động
+                            (framework) từ đầu bằng <strong>Playwright và TypeScript</strong> theo mô hình Page Object
+                            Model (POM); phát triển bộ test tự động cho Web UI và <strong>RESTful APIs</strong> kết hợp
+                            <strong>Java (Serenity Cucumber)</strong>, logic nghiệp vụ backend, và chuyển đổi kịch bản
+                            kiểm thử thủ công thành kịch bản tự động có khả năng tái sử dụng cao.
+                        </li>
+                        <li><strong>CI/CD & Giám sát hệ thống:</strong> Tích hợp lịch kích hoạt kiểm thử tự động vào
+                            <strong>Jenkins</strong> và <strong>GitHub Actions</strong> cho kiểm thử hồi quy hàng đêm;
+                            tra cứu và kiểm tra log trên <strong>Datadog</strong> nhằm hỗ trợ điều tra nguyên nhân gốc
+                            rễ và phân tích lỗi nhanh chóng.
+                        </li>
+                        <li><strong>Chiến lược dữ liệu kiểm thử (Test Data):</strong> Xây dựng cơ chế cô lập và chuẩn bị
+                            dữ liệu kiểm thử độc lập, đảm bảo các kịch bản chạy ổn định và không bị phụ thuộc chéo.
+                        </li>
+                    </ul>
+                    <div class="tools-line" id="tools-jitsu"><strong>Công nghệ:</strong> Java, TypeScript, Playwright,
+                        Serenity Cucumber, REST APIs, Jenkins, GitHub, Datadog.
+                    </div>
+                </div>
+
+                <!-- 2. VIETTEL SOLUTIONS (VTS) -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="role-company">VIETTEL SOLUTIONS (VTS)</span>
+                            <div class="company-sub t-role-vts">Full-stack Tester & Squad Leader &bull; Hà Nội</div>
+                        </div>
+                        <span class="timeline-date">04/2022 &ndash; 03/2025</span>
+                    </div>
+                    <ul class="desc-list" id="exp-vts">
+                        <li><strong>Chiến lược & Kiến trúc Kiểm thử Tự động:</strong> Phân tích yêu cầu và hoạch định
+                            chiến lược kiểm thử tự động hóa cho nền tảng quy mô lớn (<em>Viettel Meeting</em>); trực
+                            tiếp phát triển bộ test tự động hồi quy chức năng và API với <strong>Serenity BDD
+                                (Java/JUnit)</strong> tích hợp CI/CD Jenkins.
+                        </li>
+                        <li><strong>Kiểm thử Hiệu năng:</strong> Thiết kế kịch bản tải, kiểm
+                            thử áp lực (stress test) và đánh giá ngưỡng đồng thời bằng <strong>Apache JMeter</strong>;
+                            xác thực kịch bản mở rộng hệ thống (scale-out) khi quá tải và giám sát tài nguyên máy chủ
+                            theo thời gian thực qua <strong>Grafana</strong>.
+                        </li>
+                        <li><strong>Dẫn dắt Đội ngũ & Quản trị Agile:</strong> Đảm nhiệm vai trò Squad Leader từ
+                            08/2022 cho nhóm 11&ndash;12 thành viên, quản lý backlog và kiểm soát tiến độ chất
+                            lượng trên Jira.
+                        </li>
+                        <li><strong>Quản trị Quy trình & Đào tạo:</strong> Chuẩn hóa quy trình kiểm thử và tài liệu
+                            hướng dẫn kỹ thuật; trực tiếp đào tạo kỹ năng automation testing cho các
+                            thành viên mới trong dự án.
+                        </li>
+                    </ul>
+                    <div class="tools-line" id="tools-vts"><strong>Công nghệ/Công cụ:</strong> Postman, Figma, Jmeter,
+                        Selenium Serenity Junit, Katalon, Rest Assured, Jenkins, Jira, Confluence, Qmetry, Zephyr, SQL,
+                        minIO, Grafana, Airtable, MS Office,...
+                    </div>
+                </div>
+
+                <!-- 3. ONE MOUNT -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="role-company">ONE MOUNT</span>
+                            <div class="company-sub t-role-onemount">Software QA Tester &bull; Hà Nội
+                            </div>
+                        </div>
+                        <span class="timeline-date">07/2021 &ndash; 01/2022</span>
+                    </div>
+                    <ul class="desc-list" id="exp-onemount">
+                        <li><strong>Kiểm thử Tích hợp & API:</strong> Thiết kế và thực thi kịch bản kiểm thử tích hợp,
+                            kiểm thử API microservices bằng <strong>Postman</strong> cho hệ sinh thái siêu ứng dụng
+                            VinID và sàn OneHousing.
+                        </li>
+                        <li><strong>Xác thực CSDL & Quản lý Lỗi:</strong> Truy vấn và kiểm tra tính toàn vẹn dữ liệu
+                            trên MySQL (phpMyAdmin) và MongoDB; quản lý vòng đời lỗi và tiến độ sprint trên nền tảng
+                            Jira theo mô hình Agile.
+                        </li>
+                    </ul>
+                    <div class="tools-line" id="tools-onemount"><strong>Công nghệ/Công cụ:</strong> Postman, Figma,
+                        Jira, Confluence, Qmetry, Slack, SQL with phpMyAdmin, NoSQL with MongoDB, Spring boot....
+                    </div>
+                </div>
+
+                <!-- 4. VIETTEL HIGH TECH -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="role-company">VIETTEL HIGH TECH</span>
+                            <div class="company-sub t-role-vht">Entry-level Automation Tester &bull; Hà Nội</div>
+                        </div>
+                        <span class="timeline-date">07/2020 &ndash; 04/2021</span>
+                    </div>
+                    <ul class="desc-list" id="exp-vht">
+                        <li><strong>Nghiên cứu Khung Kiểm thử Tự động:</strong> Nghiên cứu kiến thức kiểm thử chuẩn quốc
+                            tế ISTQB Foundation; thử nghiệm xây dựng kịch bản kiểm thử tự động BDD với <strong>Java,
+                                Serenity BDD, Cucumber</strong> và <strong>JUnit</strong>.
+                        </li>
+                        <li><strong>Mô hình CI/CD:</strong> Tìm hiểu mô hình CI/CD và quy trình tích hợp kiểm thử tự
+                            động vào hệ thống quản lý mã nguồn.
+                        </li>
+                    </ul>
+                    <div class="tools-line" id="tools-vht"><strong>Công nghệ:</strong> Java, Serenity Cucumber, JUnit,
+                        CI/CD.
+                    </div>
+                </div>
+
+                <!-- 5. MSO LAB -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="role-company" id="comp-msolab">PHÒNG THÍ NGHIỆM MSO (HUST)</span>
+                            <div class="company-sub t-role-msolab">Sinh viên Nghiên cứu &bull; ĐHBK Hà Nội</div>
+                        </div>
+                        <span class="timeline-date">03/2018 &ndash; 08/2021</span>
+                    </div>
+                    <ul class="desc-list" id="exp-msolab">
+                        <li><strong>Tối ưu hóa Thuật toán:</strong> Nghiên cứu các giải thuật tối ưu hóa Memetic và
+                            giải thuật Di truyền (Genetic Algorithm) nhằm tối đa hóa vùng phủ và tuổi thọ mạng cảm biến
+                            không dây (WSN).
+                        </li>
+                        <li><strong>Thiết kế Kịch bản Kiểm thử thuật toán:</strong> Xây dựng các trường hợp kiểm thử
+                            nhằm đánh giá độ chính xác, tốc độ hội tụ và độ bền vững của mô hình giải thuật đề xuất.
+                        </li>
+                    </ul>
+                    <div class="tools-line" id="tools-msolab"><strong>Công nghệ:</strong> Java, LaTeX, MS Office.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Research & Publications -->
+        <section class="content-section">
+            <h2 class="sec-heading t-title-research">Công bố khoa học & Bài báo quốc tế</h2>
+            <div id="research-content"
+                 style="font-size: 13px; line-height: 1.6; background: #fafbfc; padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border-color); border-left: 3px solid var(--ssi-red);">
+                &ldquo;<strong>Optimizing wireless sensor network lifetime through K-coverage maximization and memetic
+                search</strong>&rdquo;, tạp chí ISI/Scopus <em>Sustainable Computing: Informatics and Systems</em>, Tập
+                40, Tháng 12/2023, 100905.
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    // Preview selected image instantly
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('avatarImg').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Bilingual Data Dictionary
+    const cvData = {
+        vi: {
+            avatarUpload: "Đổi ảnh",
+            avatarHint: "Click vào ảnh để thay ảnh đại diện",
+            titlePersonal: "Thông tin cá nhân",
+            genderDob: "Nữ • 09/03/1998",
+            address: "Nam Từ Liêm, Hà Nội",
+            titleEdu: "Học vấn",
+            schoolHust: "ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+            degreeHust: "Cử nhân Khoa học Máy tính • Trường CNTT & TT (SoICT)",
+            titleSkills: "Kỹ năng chuyên môn",
+            skillAuto: "Kiểm thử Tự động & Hiệu năng",
+            skillLang: "Ngôn ngữ lập trình",
+            skillCicd: "CI/CD & Giám sát hệ thống",
+            skillTools: "Công cụ quản lý dự án",
+            skillDb: "Cơ sở dữ liệu",
+            titleCert: "Chứng chỉ quốc tế",
+            titleAwards: "Giải thưởng & Thành tựu",
+            aw1: "Lao động tiên tiến",
+            aw2: "Giải Nhất Ý tưởng Sáng tạo",
+            aw3: "Chiến sĩ thi đua",
+            aw4: "Ý tưởng Sáng tạo được công nhận",
+            aw5: "Giải Nhất Ý tưởng Sáng tạo",
+            aw6: "Giải Thuyết trình Đồ án Tốt nghiệp Xuất sắc",
+            aw7: "Giải Nhất Sáng tạo Khoa học Kỹ thuật",
+            aw8: "Giải Khuyến khích Sinh viên NCKH",
+            aw9: "Học bổng Microsoft YouthSpark",
+            aw10: "Học bổng Odon Vallet",
+            aw11: "Giải Nhì Học sinh Giỏi môn Vật lý cấp Tỉnh",
+            awo1: "Tổng Công ty Giải pháp Doanh nghiệp Viettel (VTS)",
+            awo2: "Trung tâm Nền tảng Sản phẩm • Viettel Solutions",
+            awo3: "Tổng Công ty Giải pháp Doanh nghiệp Viettel (VTS)",
+            awo4: "Viettel Solutions",
+            awo5: "Trung tâm R&D • Viettel Solutions",
+            awo6: "Đại học Bách Khoa Hà Nội (HUST)",
+            awo7: "Cuộc thi Sáng tạo KHCN 2018-2019 • HUST",
+            awo8: "Đại học Bách Khoa Hà Nội (HUST)",
+            awo9: "Tập đoàn Microsoft",
+            awo10: "Tổ chức Khoa học & Giáo dục Gặp gỡ Việt Nam",
+            awo11: "Sở GD&ĐT Tỉnh Thanh Hóa",
+            toolsJitsu: "<strong>Công nghệ:</strong> Java, TypeScript, Playwright, Serenity Cucumber, REST APIs, Jenkins, GitHub, Datadog.",
+            toolsVts: "<strong>Công nghệ/Công cụ:</strong> Postman, Figma, Jmeter, Selenium Serenity Junit, Katalon, Rest Assured, Jenkins, Jira, Confluence, Qmetry, Zephyr, SQL, minIO, Grafana, Airtable, MS Office,...",
+            toolsOnemount: "<strong>Công nghệ/Công cụ:</strong> Postman, Figma, Jira, Confluence, Qmetry, Slack, SQL with phpMyAdmin, NoSQL with MongoDB, Spring boot....",
+            toolsVht: "<strong>Công nghệ:</strong> Java, Serenity Cucumber, JUnit, CI/CD.",
+            toolsMsolab: "<strong>Công nghệ:</strong> Java, LaTeX, MS Office.",
+            headline: "Kỹ sư Kiểm thử Tự động / Kỹ sư Kiểm thử Toàn diện (QA)",
+            titleSummary: "Tóm tắt chuyên môn",
+            summaryContent: "Phát huy kinh nghiệm kiểm thử để xây dựng giải pháp đảm bảo chất lượng toàn diện. Định hướng phát triển thành chuyên gia kiểm thử, đồng hành dẫn dắt đội ngũ kỹ thuật, cải tiến liên tục quy trình kiểm thử phần mềm và mang lại giá trị bền vững cho dự án.",
+            titleExp: "Kinh nghiệm làm việc",
+            roleJitsu: "Full-stack Tester",
+            dateJitsu: "04/2025 – Hiện tại",
+            expJitsu: `
+          <li><strong>UI & API Automation:</strong> Thiết kế và xây dựng khung kiểm thử tự động (framework) từ đầu bằng <strong>Playwright và TypeScript</strong> theo mô hình Page Object Model (POM); phát triển bộ test tự động cho Web UI và <strong>RESTful APIs</strong> kết hợp <strong>Java (Serenity Cucumber)</strong>, logic nghiệp vụ backend, và chuyển đổi kịch bản kiểm thử thủ công thành kịch bản tự động có khả năng tái sử dụng cao.</li>
+          <li><strong>CI/CD & Giám sát hệ thống:</strong> Tích hợp lịch kích hoạt kiểm thử tự động vào <strong>Jenkins</strong> và <strong>GitHub Actions</strong> cho kiểm thử hồi quy hàng đêm; tra cứu và kiểm tra log trên <strong>Datadog</strong> nhằm hỗ trợ điều tra nguyên nhân gốc rễ và phân tích lỗi nhanh chóng.</li>
+          <li><strong>Chiến lược dữ liệu kiểm thử (Test Data):</strong> Xây dựng cơ chế cô lập và chuẩn bị dữ liệu kiểm thử độc lập, đảm bảo các kịch bản chạy ổn định và không bị phụ thuộc chéo.</li>
+        `,
+            roleVts: "Full-stack Tester & Squad Leader • Hà Nội",
+            expVts: `
+          <li><strong>Chiến lược & Kiến trúc Kiểm thử Tự động:</strong> Phân tích yêu cầu và hoạch định chiến lược kiểm thử tự động hóa cho nền tảng quy mô lớn (<em>Viettel Meeting</em>); trực tiếp phát triển bộ test tự động hồi quy chức năng và API với <strong>Serenity BDD (Java/JUnit)</strong> tích hợp CI/CD Jenkins.</li>
+          <li><strong>Kiểm thử Hiệu năng:</strong> Thiết kế kịch bản tải, kiểm thử áp lực (stress test) và đánh giá ngưỡng đồng thời bằng <strong>Apache JMeter</strong>; xác thực kịch bản mở rộng hệ thống (scale-out) khi quá tải và giám sát tài nguyên máy chủ theo thời gian thực qua <strong>Grafana</strong>.</li>
+          <li><strong>Dẫn dắt Đội ngũ & Quản trị Agile:</strong> Đảm nhiệm vai trò Squad Leader từ 08/2022 cho nhóm 11&ndash;12 thành viên, quản lý backlog và kiểm soát tiến độ chất lượng trên Jira.</li>
+          <li><strong>Quản trị Quy trình & Đào tạo:</strong> Chuẩn hóa quy trình kiểm thử và tài liệu hướng dẫn kỹ thuật; trực tiếp đào tạo kỹ năng automation testing cho các thành viên mới trong dự án.</li>
+        `,
+            roleOnemount: "Software QA Tester • Hà Nội",
+            expOnemount: `
+          <li><strong>Kiểm thử Tích hợp & API:</strong> Thiết kế và thực thi kịch bản kiểm thử tích hợp, kiểm thử API microservices bằng <strong>Postman</strong> cho hệ sinh thái siêu ứng dụng VinID và sàn OneHousing.</li>
+          <li><strong>Xác thực CSDL & Quản lý Lỗi:</strong> Truy vấn và kiểm tra tính toàn vẹn dữ liệu trên MySQL (phpMyAdmin) và MongoDB; quản lý vòng đời lỗi và tiến độ sprint trên nền tảng Jira theo mô hình Agile.</li>
+        `,
+            roleVht: "Entry-level Automation Tester • Hà Nội",
+            expVht: `
+          <li><strong>Nghiên cứu Khung Kiểm thử Tự động:</strong> Nghiên cứu kiến thức kiểm thử chuẩn quốc tế ISTQB Foundation; thử nghiệm xây dựng kịch bản kiểm thử tự động BDD với <strong>Java, Serenity BDD, Cucumber</strong> và <strong>JUnit</strong>.</li>
+          <li><strong>Mô hình CI/CD:</strong> Tìm hiểu mô hình CI/CD và quy trình tích hợp kiểm thử tự động vào hệ thống quản lý mã nguồn.</li>
+        `,
+            roleMsolab: "Sinh viên Nghiên cứu • ĐHBK Hà Nội",
+            expMsolab: `
+          <li><strong>Tối ưu hóa Thuật toán:</strong> Nghiên cứu các giải thuật tối ưu hóa Memetic và giải thuật Di truyền (Genetic Algorithm) nhằm tối đa hóa vùng phủ và tuổi thọ mạng cảm biến không dây (WSN).</li>
+          <li><strong>Thiết kế Kịch bản Kiểm thử thuật toán:</strong> Xây dựng các trường hợp kiểm thử nhằm đánh giá độ chính xác, tốc độ hội tụ và độ bền vững của mô hình giải thuật đề xuất.</li>
+        `,
+            titleResearch: "Công bố khoa học & Bài báo quốc tế",
+            compMsolab: "PHÒNG THÍ NGHIỆM MSO (HUST)",
+            researchContent: `&ldquo;<strong>Optimizing wireless sensor network lifetime through K-coverage maximization and memetic search</strong>&rdquo;, tạp chí ISI/Scopus <em>Sustainable Computing: Informatics and Systems</em>, Tập 40, Tháng 12/2023, 100905.`
+        },
+        en: {
+            avatarUpload: "Upload Photo",
+            avatarHint: "Click photo to change avatar",
+            titlePersonal: "Personal Info",
+            genderDob: "Female • 09/03/1998",
+            address: "Nam Tu Liem, Hanoi",
+            titleEdu: "Education",
+            schoolHust: "HANOI UNIVERSITY OF SCIENCE AND TECHNOLOGY (HUST)",
+            degreeHust: "Engineer, Computer Science • SoICT",
+            titleSkills: "Technical Skills",
+            skillAuto: "Automation & Performance",
+            skillLang: "Programming Languages",
+            skillCicd: "CI/CD & Observability",
+            skillTools: "Project & QA Tools",
+            skillDb: "Databases",
+            titleCert: "Certifications",
+            titleAwards: "Awards & Honors",
+            aw1: "Advanced Worker",
+            aw2: "The First Prize for Innovation Idea",
+            aw3: "Emulation Fighter",
+            aw4: "Recognized Innovative Idea",
+            aw5: "The First Prize for Innovation Idea",
+            aw6: "Best Presentation Award",
+            aw7: "First Prize in Scientific Innovation",
+            aw8: "Consolation Prize • Science Research",
+            aw9: "Microsoft YouthSpark Scholarship",
+            aw10: "Odon Vallet Scholarship",
+            aw11: "Second Prize in Physics (Provincial Level)",
+            awo1: "Viettel Solutions (VTS)",
+            awo2: "Product Platform Center • Viettel Solutions",
+            awo3: "Viettel Solutions (VTS)",
+            awo4: "Viettel Solutions",
+            awo5: "R&D Center • Viettel Solutions",
+            awo6: "Hanoi University of Science and Technology (HUST)",
+            awo7: "Science & Tech Innovation Contest 2018-2019 • HUST",
+            awo8: "Hanoi University of Science and Technology (HUST)",
+            awo9: "Microsoft Corporation",
+            awo10: "Rencontres du Vietnam Organization",
+            awo11: "Thanh Hoa Department of Education and Training",
+            toolsJitsu: "<strong>Technologies:</strong> Java, TypeScript, Playwright, Serenity Cucumber, REST APIs, Jenkins, GitHub, Datadog.",
+            toolsVts: "<strong>Technologies & Tools:</strong> Postman, Figma, Jmeter, Selenium Serenity Junit, Katalon, Rest Assured, Jenkins, Jira, Confluence, Qmetry, Zephyr, SQL, minIO, Grafana, Airtable, MS Office,...",
+            toolsOnemount: "<strong>Technologies & Tools:</strong> Postman, Figma, Jira, Confluence, Qmetry, Slack, SQL with phpMyAdmin, NoSQL with MongoDB, Spring boot....",
+            toolsVht: "<strong>Technologies:</strong> Java, Serenity Cucumber, JUnit, CI/CD.",
+            toolsMsolab: "<strong>Technologies:</strong> Java, LaTeX, MS Office.",
+            headline: "Automation QA Engineer/Full-Stack QA Engineer",
+            titleSummary: "Summary",
+            summaryContent: "Leveraging testing expertise to build comprehensive software quality assurance solutions. Aiming to grow into a QA expert, mentoring technical teams, continuously improving software testing processes, and delivering sustainable value to projects.",
+            titleExp: "Work Experience",
+            roleJitsu: "Full-stack Tester • Hanoi",
+            dateJitsu: "04/2025 – Present",
+            expJitsu: `
+          <li><strong>UI & API Automation:</strong> Directly architected and built the test automation framework from scratch using <strong>Playwright and TypeScript</strong> adhering to the Page Object Model (POM); developed automated test suites for Web UI and <strong>RESTful APIs</strong> combining <strong>Java (Serenity Cucumber)</strong>, backend business logic, and transformed manual test cases into highly maintainable, reusable scripts.</li>
+          <li><strong>CI/CD & Observability:</strong> Integrate automated test triggers into <strong>Jenkins</strong> and <strong>GitHub Actions</strong> workflows for nightly regression runs; inspect and analyze logs via <strong>Datadog</strong> for rapid root-cause failure investigation and debugging.</li>
+          <li><strong>Test Data Strategy:</strong> Manage test data sources and environment fixtures to guarantee independence and determinism across automated test executions.</li>
+        `,
+            roleVts: "Full-stack Tester & Squad Leader • Hanoi",
+            expVts: `
+          <li><strong>Test Strategy & Automation Architecture:</strong> Analyzed system requirements and established comprehensive manual and automation testing strategies for high-scale enterprise platforms (<em>Viettel Meeting</em>); built functional and API automated regression suites using <strong>Serenity BDD (Java/JUnit)</strong> integrated into Jenkins CI/CD.</li>
+          <li><strong>Performance Testing:</strong> Designed and executed load, stress, and endurance test scenarios using <strong>Apache JMeter</strong> to evaluate concurrency limits and verify system scale-out stability; monitored distributed server telemetry in real-time via <strong>Grafana</strong>.</li>
+          <li><strong>Squad Leadership & Agile Delivery:</strong> Served as QA Squad Leader since Aug 2022 for cross-functional teams of 11&ndash;12 members, prioritized Product Backlogs, and steered deliveries on Jira.</li>
+          <li><strong>QA Governance & Process Improvement:</strong> Supervised defect lifecycles and test traceability; standardized automation frameworks, authored operating procedures, and led testing skill training sessions for engineers.</li>
+        `,
+            roleOnemount: "Software QA Tester • Hanoi",
+            expOnemount: `
+          <li><strong>Integration & API Verification:</strong> Formulated and executed functional integration test scenarios and verified RESTful APIs across microservices using <strong>Postman</strong> for consumer-facing super-app ecosystems (VinID, OneHousing).</li>
+          <li><strong>Data Validation & Defect Tracking:</strong> Conducted database consistency verification using SQL queries (phpMyAdmin) and NoSQL collections (MongoDB); tracked, prioritized, and managed bug lifecycles on Jira within standard Agile sprints.</li>
+        `,
+            roleVht: "Entry-level Automation Tester • Hanoi",
+            expVht: `
+          <li><strong>Automation Framework R&D:</strong> Researched and prototyped test automation architectures utilizing <strong>Java, Serenity BDD, Cucumber</strong>, and <strong>JUnit</strong>, aligning test cases with ISTQB Foundation standards.</li>
+          <li><strong>CI/CD Pipelines:</strong> Investigated continuous integration and delivery pipelines, exploring automated test build triggers on software repositories.</li>
+        `,
+            roleMsolab: "Research Student • HUST, Hanoi",
+            expMsolab: `
+          <li><strong>Algorithm Optimization:</strong> Researched Memetic and Genetic Algorithms for optimal coverage and energy preservation in Wireless Sensor Networks (WSN).</li>
+          <li><strong>Algorithm Test Scenario Design:</strong> Developed test cases to evaluate the accuracy, convergence speed, and robustness of the proposed algorithmic models.</li>
+        `,
+            titleResearch: "Research & Publications",
+            compMsolab: "MSO LAB (HUST)",
+            researchContent: `&ldquo;<strong>Optimizing wireless sensor network lifetime through K-coverage maximization and memetic search</strong>&rdquo;, ISI/Scopus Journal <em>Sustainable Computing: Informatics and Systems</em>, Vol. 40, Dec 2023, 100905.`
+        }
+    };
+
+    function switchLanguage(lang) {
+        const data = cvData[lang];
+        if (!data) return;
+
+        // Update button styles
+        document.getElementById('btnVi').classList.toggle('active', lang === 'vi');
+        document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+
+        // Update text in Sidebar
+        document.querySelector('.t-avatar-upload').textContent = data.avatarUpload;
+        document.querySelector('.t-avatar-hint').textContent = data.avatarHint;
+        document.querySelector('.t-title-personal').textContent = data.titlePersonal;
+        document.querySelector('.t-gender-dob').textContent = data.genderDob;
+        document.querySelector('.t-address').textContent = data.address;
+
+        // Sidebar Education
+        document.querySelector('.t-title-edu').textContent = data.titleEdu;
+        document.querySelector('.t-school-hust').textContent = data.schoolHust;
+        document.querySelector('.t-degree-hust').textContent = data.degreeHust;
+
+        document.querySelector('.t-title-skills').textContent = data.titleSkills;
+        document.querySelector('.t-skill-auto').textContent = data.skillAuto;
+        document.querySelector('.t-skill-lang').textContent = data.skillLang;
+        document.querySelector('.t-skill-cicd').textContent = data.skillCicd;
+        document.querySelector('.t-skill-tools').textContent = data.skillTools;
+        document.querySelector('.t-skill-db').textContent = data.skillDb;
+        document.querySelector('.t-title-cert').textContent = data.titleCert;
+        document.querySelector('.t-title-awards').textContent = data.titleAwards;
+
+        // Awards Titles
+        for (let i = 1; i <= 11; i++) {
+            const el = document.querySelector(`.t-aw-${i}`);
+            if (el && data[`aw${i}`]) el.textContent = data[`aw${i}`];
+        }
+
+        // Awards Organizations
+        for (let i = 1; i <= 11; i++) {
+            const orgEl = document.querySelector(`.t-awo-${i}`);
+            if (orgEl && data[`awo${i}`]) orgEl.textContent = data[`awo${i}`];
+        }
+
+        // Tools lines
+        if (document.getElementById('tools-jitsu')) document.getElementById('tools-jitsu').innerHTML = data.toolsJitsu;
+        if (document.getElementById('tools-vts')) document.getElementById('tools-vts').innerHTML = data.toolsVts;
+        if (document.getElementById('tools-onemount')) document.getElementById('tools-onemount').innerHTML = data.toolsOnemount;
+        if (document.getElementById('tools-vht')) document.getElementById('tools-vht').innerHTML = data.toolsVht;
+        if (document.getElementById('tools-msolab')) document.getElementById('tools-msolab').innerHTML = data.toolsMsolab;
+
+        // Main Content
+        document.querySelector('.t-headline').textContent = data.headline;
+        document.querySelector('.t-title-summary').textContent = data.titleSummary;
+        document.querySelector('.t-summary-content').innerHTML = data.summaryContent;
+        document.querySelector('.t-title-exp').textContent = data.titleExp;
+
+        // Experience items
+        document.querySelector('.t-role-jitsu').textContent = data.roleJitsu;
+        document.querySelector('.t-date-jitsu').textContent = data.dateJitsu;
+        document.getElementById('exp-jitsu').innerHTML = data.expJitsu;
+
+        document.querySelector('.t-role-vts').textContent = data.roleVts;
+        document.getElementById('exp-vts').innerHTML = data.expVts;
+
+        document.querySelector('.t-role-onemount').textContent = data.roleOnemount;
+        document.getElementById('exp-onemount').innerHTML = data.expOnemount;
+
+        document.querySelector('.t-role-vht').textContent = data.roleVht;
+        document.getElementById('exp-vht').innerHTML = data.expVht;
+
+        document.querySelector('.t-role-msolab').textContent = data.roleMsolab;
+        document.getElementById('exp-msolab').innerHTML = data.expMsolab;
+
+        // Research & Company Name
+        document.querySelector('.t-title-research').textContent = data.titleResearch;
+        if (document.getElementById('research-content')) document.getElementById('research-content').innerHTML = data.researchContent;
+        if (document.getElementById('comp-msolab')) document.getElementById('comp-msolab').textContent = data.compMsolab;
+    }
+</script>
+</body>
+</html>
