@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -412,6 +412,7 @@
             line-height: 1.6;
             color: var(--text-main);
             text-align: justify;
+            text-justify: inter-word;
             background: var(--ssi-red-light);
             padding: 14px 18px;
             border-radius: 8px;
@@ -495,6 +496,8 @@
 
         .desc-list li {
             margin-bottom: 5px;
+            text-align: justify;
+            text-justify: inter-word;
         }
 
         .desc-list li strong {
@@ -628,6 +631,8 @@
                 margin-bottom: 4px !important;
                 page-break-inside: auto !important;
                 break-inside: auto !important;
+                text-align: justify !important;
+                text-justify: inter-word !important;
             }
 
             .tools-line {
@@ -686,8 +691,8 @@
 <div class="cv-container">
     <!-- Interactive Language Switcher -->
     <div class="lang-switcher-wrapper">
-        <button class="lang-btn active" id="btnVi" onclick="switchLanguage('vi')">🇻🇳 TIẾNG VIỆT</button>
-        <button class="lang-btn" id="btnEn" onclick="switchLanguage('en')">🇬🇧 ENGLISH</button>
+        <button class="lang-btn" id="btnVi" onclick="switchLanguage('vi')">🇻🇳 TIẾNG VIỆT</button>
+        <button class="lang-btn active" id="btnEn" onclick="switchLanguage('en')">🇬🇧 ENGLISH</button>
     </div>
 
     <!-- LEFT SIDEBAR -->
@@ -1062,7 +1067,7 @@
         <section class="content-section">
             <h2 class="sec-heading t-title-research">Công bố khoa học & Bài báo quốc tế</h2>
             <div id="research-content"
-                 style="font-size: 13px; line-height: 1.6; background: #fafbfc; padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border-color); border-left: 3px solid var(--ssi-red);">
+                 style="font-size: 13px; line-height: 1.6; background: #fafbfc; padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border-color); border-left: 3px solid var(--ssi-red); text-align: justify; text-justify: inter-word;">
                 &ldquo;<strong>Optimizing wireless sensor network lifetime through K-coverage maximization and memetic
                 search</strong>&rdquo;, tạp chí ISI/Scopus <em>Sustainable Computing: Informatics and Systems</em>, Tập
                 40, Tháng 12/2023, 100905.
@@ -1130,7 +1135,7 @@
             toolsOnemount: "<strong>Công nghệ/Công cụ:</strong> Postman, Figma, Jira, Confluence, Qmetry, Slack, SQL with phpMyAdmin, NoSQL with MongoDB, Spring boot....",
             toolsVht: "<strong>Công nghệ:</strong> Java, Serenity Cucumber, JUnit, CI/CD.",
             toolsMsolab: "<strong>Công nghệ:</strong> Java, LaTeX, MS Office.",
-            headline: "Kỹ sư Kiểm thử Tự động / Kỹ sư Kiểm thử Toàn diện (QA)",
+            headline: "Kỹ sư Kiểm thử Tự động / Kỹ sư Kiểm thử Phần mềm",
             titleSummary: "Tóm tắt chuyên môn",
             summaryContent: "Phát huy kinh nghiệm kiểm thử để xây dựng giải pháp đảm bảo chất lượng toàn diện. Định hướng phát triển thành chuyên gia kiểm thử, đồng hành dẫn dắt đội ngũ kỹ thuật, cải tiến liên tục quy trình kiểm thử phần mềm và mang lại giá trị bền vững cho dự án.",
             titleExp: "Kinh nghiệm làm việc",
@@ -1326,6 +1331,11 @@
         if (document.getElementById('research-content')) document.getElementById('research-content').innerHTML = data.researchContent;
         if (document.getElementById('comp-msolab')) document.getElementById('comp-msolab').textContent = data.compMsolab;
     }
+
+    // Default to English on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        switchLanguage('en');
+    });
 </script>
 </body>
 </html>
